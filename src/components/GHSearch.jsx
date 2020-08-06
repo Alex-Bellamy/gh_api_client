@@ -15,6 +15,14 @@ class GHSearch extends Component {
   }
 
   render() {
+    const showUsernames = this.state.items.map((user) => {
+      return (
+        <div>
+          <p>{user.login}</p>
+        </div>
+      );
+    });
+
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -22,13 +30,14 @@ class GHSearch extends Component {
             type="text"
             name="search"
             placeholder="Input GH username"
-            value={this.State.searchTerm}
+            value={this.state.searchTerm}
             onChange={this.onChange}
           />
           <Button id="submit" name="search">
             Search
           </Button>
         </form>
+        <p id="users">{showUsernames}</p>
       </div>
     );
   }
