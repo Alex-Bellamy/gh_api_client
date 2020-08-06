@@ -3,6 +3,17 @@ import { Button, Input } from "semantic-ui-react";
 import axios from "axios";
 
 class GHSearch extends Component {
+
+  onChange = (e) => {
+    this.setState({ searchTerm: e.target.value });
+  };
+
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    const url = `https://api.github.com/search/users?q=${this.state.searchTerm}`;
+    const response = await axios.get(url);
+  }
+
   render() {
     return (
       <div>
