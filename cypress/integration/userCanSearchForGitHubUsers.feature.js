@@ -13,10 +13,10 @@ describe("User can search for Github registry of users", () => {
   });
 
   it("User can see first username", () => {
-    cy.get("#user-1").should("contain", "alex");
+    cy.contains("alex").should("be.visible");
   });
 
   it("User can see second username", () => {
-    cy.get("#user-2").should("contain", "alexcrichton");
+    cy.contains("alexcrichton").should("be.visible");
   });
 });

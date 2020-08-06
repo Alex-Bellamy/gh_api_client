@@ -3,6 +3,10 @@ import { Button, Input } from "semantic-ui-react";
 import axios from "axios";
 
 class GHSearch extends Component {
+  state = {
+    searchTerm: [],
+    items: [],
+  };
 
   onChange = (e) => {
     this.setState({ searchTerm: e.target.value });
@@ -12,7 +16,10 @@ class GHSearch extends Component {
     e.preventDefault();
     const url = `https://api.github.com/search/users?q=${this.state.searchTerm}`;
     const response = await axios.get(url);
-  }
+    this.setState({
+      items: response.data.items,
+    });
+  };
 
   render() {
     const showUsernames = this.state.items.map((user) => {
